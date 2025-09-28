@@ -3,14 +3,10 @@ import axios from "axios";
 export const send = async (req, res) => {
     const { phone_no, seconds } = req.body;
 
-    // Clean the environment variables (remove spaces/invisible characters)
     const API_URL = process.env.API_URL?.trim();
     const ORIGIN = process.env.ORIGIN?.trim();
 
     try {
-        console.log("Cleaned API_URL:", `"${API_URL}"`); // Quotes will show hidden spaces
-        console.log("Cleaned ORIGIN:", `"${ORIGIN}"`);
-
         const response = await axios.post(
             `${API_URL}/send-otp`,
             {
